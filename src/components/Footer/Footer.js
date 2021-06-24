@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Footer.module.scss'
+import * as styles from './Footer.module.scss'
 import { Nav, Row, Col, Container, ListGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationArrow, faPhoneAlt,faEnvelope, faCircle} from '@fortawesome/free-solid-svg-icons'
@@ -56,9 +56,9 @@ export default function Footer(props) {
           <ListGroup className={styles.footer_listItem}>
           <h2>NUS Libraries</h2>
             <li>  <FontAwesomeIcon icon={faLocationArrow} className={styles.icon}/>
-              <div className={styles.footer_listItem.address}>Central Library{'\n'}
+              <pre className={styles.address}>Central Library{'\n'}
               12 Kent Ridge Crescent{'\n'}
-              Singapore 119275</div>
+              Singapore 119275</pre>
               </li>
             <li><FontAwesomeIcon icon={faPhoneAlt} className={styles.icon}/><span>+65 6516 2028</span></li>
             <li><FontAwesomeIcon icon={faEnvelope} className={styles.icon}/>

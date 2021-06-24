@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import HeaderItems from './HeaderItems.js'
-import Header from "./Header/header.js"
+import Header from "./Header/Header.js"
 //import "./layout.css"
 import Footer from "./Footer/footer.js"
 
@@ -37,8 +37,8 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }
