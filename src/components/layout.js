@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import HeaderItems from './HeaderItems.js'
 import Header from "./Header/Header.js"
+import Nav from "./Navbar/Navbar.js"
 //import "./layout.css"
 import Footer from "./Footer/footer.js"
 
@@ -29,6 +30,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header menuItems={HeaderItems} />
+      <Nav />
       <div
         style={{
           margin: `0 auto`,
