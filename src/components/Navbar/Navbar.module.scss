@@ -1,13 +1,10 @@
 .navbar {
-    border-top: 4px solid var(--primary);
     z-index: 6660;
     height: var(--header-height);
     padding-left:20px;
-    background-color: blue;
   }
 
   .navItem {
-      color:blueviolet;
       font-size:14px;
       padding:15px 0px;
       margin:0px 15px;
