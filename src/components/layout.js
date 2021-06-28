@@ -12,7 +12,7 @@ import HeaderItems from './HeaderItems.js'
 import Header from "./Header/Header.js"
 import Navbar from "./Navbar/Navbar.js"
 //import "./layout.css"
-import Footer from "./Footer/footer.js"
+import Footer from "./Footer/Footer.js"
 
 
 const Layout = ({ children }) => {
