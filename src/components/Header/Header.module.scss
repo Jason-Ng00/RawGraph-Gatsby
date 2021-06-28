@@ -1,8 +1,7 @@
 .header {
   display:flex;
-  justify-content:center;
-  padding:20px 0px;
-  max-width:100%;
+  justify-content:start;
+  padding:0px 0px;
 
   font-family: "Helvetica Neue Lt", Helvetica, Arial, sans-serif;
   letter-spacing: 0.04em;
@@ -14,22 +13,14 @@
     justify-content: start;
   }
 
-
-  .headerLogo {
-    height:60px;
-    width:auto;
-  }
-
   .headerContainer {
-    display:flex;
-    justify-content: space-between;
-    max-width:100%;
     width:100%;
   }
 
+
   .rightHeader {
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width:100%;
   }
 

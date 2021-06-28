@@ -1,19 +1,35 @@
 .navbar {
     z-index: 6660;
     height: var(--header-height);
-    padding-left:20px;
+    padding:0px;
+    max-width:100% !important;
+    background-color: #f8f8f8;
+    display:flex;
+    justify-content:center;
+
   }
 
   .navItem {
-      font-size:14px;
-      padding:15px 0px;
-      margin:0px 15px;
+    color: black !important;
+    font-size:14px;
+    padding:0px 0px;
+    margin:0px 10px;
 
+    a {
+        color: black !important;
+    }
 
-
+    div {
+        margin-top:10px !important;
+    }
   }
 
+  .navItem:hover {
+    border-bottom: 3px solid #ef7c00;
+}
+
+
 .dropdown:hover .dropdown-menu {
-    display: block;
+    background-color: #ef7c00;
 }
   

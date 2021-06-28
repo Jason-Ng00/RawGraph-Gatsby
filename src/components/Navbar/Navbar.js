@@ -4,15 +4,14 @@ import { Container, Row, Col, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 
 function HoverControlledDropdown(props) {
     const [isHovered, setIsHovered] = useState(false);
-    const [isClicked, setIsClicked] = useState(false);
-
+    const [isClicked, setIsClicked] = useState(false)
     return (
         <NavDropdown
             {...props}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onToggle={() => setIsClicked(!isClicked)}
-            show={isClicked || isHovered}
+            show={isHovered || isClicked}
         />
     );
 }
@@ -21,20 +20,20 @@ export default function NavBar({ menuItems }) {
 
   return (
     <Container className={styles.navbar}>
-    <Col className="d-none d-sm-none d-md-block d-lg-block">
-        <Navbar bg="light" expand="lg">
+    <Col xs={12} sm={10} md={10} lg={10} className="d-none d-sm-none d-md-block d-lg-block">
+        <Navbar expand="lg">
         <Container>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link className={styles.navItem} href="/">Home</Nav.Link>
 
-                <HoverControlledDropdown title="Education">
+                <HoverControlledDropdown className={styles.navItem} title="Education">
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/teachingandlearning/about" target="_self">Teaching &amp; Learningn</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/tel-imaginarium/about-tel-imaginarium" target="_self">TEL-Imaginarium</NavDropdown.Item>
                 </HoverControlledDropdown>
 
-                <HoverControlledDropdown title="Research">
+                <HoverControlledDropdown className={styles.navItem} title="Research">
                 <Row>
                 <Col>
                     <h4>Skills &amp; Guides</h4>
@@ -55,7 +54,7 @@ export default function NavBar({ menuItems }) {
                 </Row>
                 </HoverControlledDropdown>
 
-                <HoverControlledDropdown title="Services">
+                <HoverControlledDropdown className={styles.navItem} title="Services">
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/e-forms/services-undergraduates?formType=Forms+for+Undergraduate+Students&formName=Undergraduate+Students&cid=630946" target="_self">Undergraduate Students</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/e-forms/services-honours-students?formType=Forms+for+Honours+Students&formName=Honours+Students&cid=630946" target="_self">Honours Students</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/e-forms/services-graduate-students?formType=Forms+for+Graduate+Students&formName=Graduate+Students&cid=630946" target="_self">Graduate Students</NavDropdown.Item>
@@ -65,7 +64,7 @@ export default function NavBar({ menuItems }) {
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/e-forms/services-external?formType=Forms+for+External+Members&formName=External+Members&cid=630946" target="_self">External Members</NavDropdown.Item>
                 </HoverControlledDropdown>
 
-                <HoverControlledDropdown title="About">
+                <HoverControlledDropdown className={styles.navItem} title="About">
                 <Row>
                 <Col>
                     <h4>NUS Libraries</h4>
@@ -87,7 +86,7 @@ export default function NavBar({ menuItems }) {
                 </Row>                
                 </HoverControlledDropdown>
 
-                <HoverControlledDropdown title="Contact &amp; Help">
+                <HoverControlledDropdown className={styles.navItem} title="Contact &amp; Help">
                     <NavDropdown.Item href="/frontend/e-resources" target="_self">Opening Hours &amp; Directions</NavDropdown.Item>
                     <NavDropdown.Item href="http://libfaq.nus.edu.sg/" target="_blank">FAQs</NavDropdown.Item>
                     <NavDropdown.Item href="/frontend/web/contact-us" target="_self">Call / EMail</NavDropdown.Item>
