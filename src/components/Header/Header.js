@@ -30,25 +30,6 @@ export default function Header() {
       
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-        {/* <Navbar.Collapse className={styles.headerNavItems} id="responsive-navbar-nav">
-          <Nav className="justify-content-end" activeKey="/home">
-            <Nav.Item>
-              <Nav.Link href="https://luminus.nus.edu.sg/">Luminus</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="http://exchange.nus.edu.sg/">Email</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="http://www.lib.nus.edu.sg/">Library</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="http://www.nus.edu.sg/campusmap/">Map</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="https://myaces.nus.edu.sg/CoE/">Calendar</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse> */}
       </Navbar>
 
       </Col>
