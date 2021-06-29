@@ -4,23 +4,20 @@ import { Container, Row, Col, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 
 function HoverControlledDropdown(props) {
     const [isHovered, setIsHovered] = useState(false);
-    const [isClicked, setIsClicked] = useState(false)
     return (
         <NavDropdown
             {...props}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onToggle={() => setIsClicked(!isClicked)}
-            show={isHovered || isClicked}
+            show={isHovered}
         />
     );
 }
 
 export default function NavBar({ menuItems }) {
-
   return (
     <Container className={styles.navbar}>
-    <Col xs={12} sm={10} md={10} lg={10} className="d-none d-sm-none d-md-block d-lg-block">
+    <Col xs={12} sm={10} md={10} lg={9} className="d-none d-sm-none d-md-block d-lg-block">
         <Navbar expand="lg">
         <Container>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -29,14 +26,14 @@ export default function NavBar({ menuItems }) {
                 <Nav.Link className={styles.navItemHome} href="/">Home</Nav.Link>
 
                 <HoverControlledDropdown className={styles.navItem} title="Education">
-                    <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/teachingandlearning/about" target="_self">Teaching &amp; Learningn</NavDropdown.Item>
+                    <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/teachingandlearning/about" target="_self">Teaching &amp; Learning</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/tel-imaginarium/about-tel-imaginarium" target="_self">TEL-Imaginarium</NavDropdown.Item>
                 </HoverControlledDropdown>
 
                 <HoverControlledDropdown className={styles.navItem} title="Research">
                 <Row>
                 <Col>
-                    <h4>Skills &amp; Guides</h4>
+                    <h5>Skills &amp; Guides</h5>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/?sg=s" target="_blank">Subject Guides</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/" target="_blank">Resource Guides</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/citation" target="_blank">Citation Styles</NavDropdown.Item>
@@ -45,7 +42,7 @@ export default function NavBar({ menuItems }) {
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/ms/researcher-unbound/about-ru" target="_self">Researcher Unbound</NavDropdown.Item>
                 </Col>
                 <Col>
-                    <h4>Tools</h4>
+                    <h5>Tools</h5>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/findfulltext/proxybookmark" target="_blank">Proxy Bookmarklet</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/citationmanagers" target="_blank">Citation Managers</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/findfulltext/findit" target="_blank">Find It! @ NUS Libraries with Google Scholar</NavDropdown.Item>
@@ -67,7 +64,7 @@ export default function NavBar({ menuItems }) {
                 <HoverControlledDropdown className={styles.navItem} title="About">
                 <Row>
                 <Col>
-                    <h4>NUS Libraries</h4>
+                    <h5>NUS Libraries</h5>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/web/about-nus-libraries/our-libraries" target="_blank">Libraries</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/web/about-nus-libraries/vision-mission" target="_blank">Mission, Vision &amp; Promise</NavDropdown.Item>
                     <NavDropdown.Item href="https://libportal.nus.edu.sg/frontend/web/about-nus-libraries/highlights" target="_blank">Highlights</NavDropdown.Item>
@@ -77,7 +74,7 @@ export default function NavBar({ menuItems }) {
                     <NavDropdown.Item href="/frontend/ms/researcher-unbound/about-ru" target="_self">Online Art Galleries</NavDropdown.Item>
                 </Col>
                 <Col>
-                    <h4>Tools</h4>
+                    <h5>Tools</h5>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/findfulltext/proxybookmark" target="_blank">Proxy Bookmarklet</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/citationmanagers" target="_blank">Citation Managers</NavDropdown.Item>
                     <NavDropdown.Item href="http://libguides.nus.edu.sg/findfulltext/findit" target="_blank">Find It! @ NUS Libraries with Google Scholar</NavDropdown.Item>
