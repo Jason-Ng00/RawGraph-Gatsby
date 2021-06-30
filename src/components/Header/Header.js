@@ -3,6 +3,7 @@ import * as styles from './Header.module.scss'
 import { Container, Col, Navbar} from 'react-bootstrap'
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import logo from "../../images/NUSL_logo.png"
 
 
 export default function Header() {
@@ -17,12 +18,15 @@ export default function Header() {
             alt="NUS LOGO"
             height={65}
             width={230}
+            layout="fixed"
             loading="eager"
             position="0 0"
             className={styles.logo}
             objectFit="contain"
           />
           </Link>
+
+          <img src={logo} alt="NUS"></img>
 
       </Col>
  
