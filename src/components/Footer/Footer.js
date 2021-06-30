@@ -3,6 +3,7 @@ import * as styles from './Footer.module.scss'
 import { Nav, Row, Col, Container, ListGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationArrow, faPhoneAlt,faEnvelope, faCircle} from '@fortawesome/free-solid-svg-icons'
+import { StaticImage } from "gatsby-plugin-image"
 
 // #TODO add commit hash
 // const commitHash = process.env.REACT_APP_VERSION || 'dev'
@@ -69,17 +70,77 @@ export default function Footer(props) {
 
         <Row className={styles.footerMinContent}>
           <Nav>
-            <Nav.Link href="https://www.facebook.com/NUSLibraries" target="_blank" className={styles.img}><img src="facebook" style={{height: 32, width: 32}} alt="facebook" />
+            <Nav.Link href="https://www.facebook.com/NUSLibraries" target="_blank" className={styles.img}>      
+              <StaticImage
+                src="../../images/facebook"
+                alt="facebook"
+                heihgt={32}
+                width={32}
+                layout="fixed"
+                loading="eager"
+                position="0 0"
+                objectFit="contain"
+              />
             </Nav.Link>
-            <Nav.Link href="https://twitter.com/NUSlibraries" target="_blank" className={styles.img}><img src="twitter" style={{height: 32, width: 32}} alt="twitter" />
+            <Nav.Link href="https://twitter.com/NUSlibraries" target="_blank" className={styles.img}>              
+              <StaticImage
+                  src="../../images/twitter"
+                  alt="twitter"
+                  heihgt={32}
+                  width={32}
+                  layout="fixed"
+                  loading="eager"
+                  position="0 0"
+                  objectFit="contain"
+                />
             </Nav.Link>
-            <Nav.Link href="https://instagram.com/nuslibraries" target="_blank" className={styles.img}><img src="instagram" style={{height: 32, width: 32}} alt="instagram" />
+            <Nav.Link href="https://instagram.com/nuslibraries" target="_blank" className={styles.img}>
+              <StaticImage
+                  src="../../images/instagram"
+                  alt="instagram"
+                  heihgt={32}
+                  width={32}
+                  layout="fixed"
+                  loading="eager"
+                  position="0 0"
+                  objectFit="contain"
+                />
             </Nav.Link>
-            <Nav.Link href="http://blog.nus.edu.sg/linus/" target="_blank" className={styles.img}><img src="word" style={{height: 32, width: 32}} alt="word" />
+            <Nav.Link href="http://blog.nus.edu.sg/linus/" target="_blank" className={styles.img}>
+              <StaticImage
+                    src="../../images/word"
+                    alt="word"
+                    heihgt={32}
+                    width={32}
+                    layout="fixed"
+                    loading="eager"
+                    position="0 0"
+                    objectFit="contain"
+                  />
             </Nav.Link>
-            <Nav.Link href="https://www.youtube.com/user/nuslibraries" target="_blank" className={styles.img}><img src="youtube" style={{height: 32, width: 32}} alt="youtube" />
+            <Nav.Link href="https://www.youtube.com/user/nuslibraries" target="_blank" className={styles.img}>
+              <StaticImage
+                      src="../../images/youtube"
+                      alt="youtube"
+                      heihgt={32}
+                      width={32}
+                      layout="fixed"
+                      loading="eager"
+                      position="0 0"
+                      objectFit="contain"
+                    />
             </Nav.Link>
-            <Nav.Link href="https://www.flickr.com/photos/nuslibraries" target="_blank" className={styles.img}><img src="flickr" style={{height: 32, width: 32}} alt="flickr" />
+            <Nav.Link href="https://www.flickr.com/photos/nuslibraries" target="_blank" className={styles.img}>
+              <StaticImage
+                      src="../../images/flickr"
+                      alt="flickr"
+                      heihgt={32}
+                      width={32}
+                      layout="fixed"
+                      loading="eager"
+                      position="0 0"
+                      objectFit="contain"
+                    />
             </Nav.Link>
           </Nav>
         </Row>
