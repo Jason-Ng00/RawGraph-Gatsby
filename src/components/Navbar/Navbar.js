@@ -17,9 +17,8 @@ function HoverControlledDropdown(props) {
 export default function NavBar({ menuItems }) {
   return (
     <Container className={styles.navbar}>
-    <Col xs={12} sm={10} md={10} lg={9} className="d-none d-sm-none d-md-block d-lg-block">
-        <Navbar expand="lg">
         <Container>
+        <Navbar expand="lg">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -94,9 +93,9 @@ export default function NavBar({ menuItems }) {
             </Nav>
 
             </Navbar.Collapse>
-        </Container>
+
         </Navbar>
-    </Col>
+        </Container>
     </Container>
 
   )
