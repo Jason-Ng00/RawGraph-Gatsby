@@ -1,6 +1,6 @@
 import React from 'react'
 import * as styles from './Content.module.scss'
-import { Container, Jumbotron, Col, Row, Card, CardDeck, Button} from 'react-bootstrap'
+import { Container, Jumbotron, Col, Row, Card, CardDeck, Button, CardColumns} from 'react-bootstrap'
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
@@ -32,6 +32,7 @@ export default function Content() {
         </Jumbotron>
 
         <Container>
+        <Row>
         <CardDeck>
             <Card>
                 <Card.Img variant="top" src="https://i.imgflip.com/4/2baxar.jpg" />
@@ -71,6 +72,74 @@ export default function Content() {
                 </Card.Footer>
             </Card>
             </CardDeck>
+        </Row>
+        <CardColumns className={styles.cardCol}>
+            <Card>
+                <Card.Img variant="top" src="https://i.imgflip.com/4/2baxar.jpg" />
+                <Card.Body>
+                <Card.Title>Card title that wraps to a new line</Card.Title>
+                <Card.Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card className="p-3">
+                <blockquote className="blockquote mb-0 card-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                    erat a ante.
+                </p>
+                <footer className="blockquote-footer">
+                    <small className="text-muted">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                    </small>
+                </footer>
+                </blockquote>
+            </Card>
+            <Card>
+                <Card.Img variant="top" src="https://cdn.kapwing.com/video_image-9gQ4aC2zl.jpg" />
+                <Card.Body>
+                <Card.Title>Card title</Card.Title>
+                <Card.Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                <small className="text-muted">Last updated 3 mins ago</small>
+                </Card.Footer>
+            </Card>
+            <Card bg="primary" text="white" className="text-center p-3">
+                <blockquote className="blockquote mb-0 card-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                    erat a ante.
+                </p>
+                <footer className="blockquote-footer">
+                    <small className="text-muted">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                    </small>
+                </footer>
+                </blockquote>
+            </Card>
+            <Card className="text-center">
+                <Card.Body>
+                <Card.Title>Card title</Card.Title>
+                <Card.Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </Card.Text>
+                <Card.Text>
+                    <small className="text-muted">Last updated 3 mins ago</small>
+                </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Img src="https://cdn.kapwing.com/video_image-9gQ4aC2zl.jpg" />
+            </Card>
+
+            </CardColumns>
+        <Row>
+
+        </Row>
         </Container>
 
       </Container>

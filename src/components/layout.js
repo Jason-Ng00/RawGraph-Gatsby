@@ -11,21 +11,19 @@ import PropTypes from "prop-types"
 import HeaderItems from './HeaderItems.js'
 import Header from "./Header/Header.js"
 import Navbar from "./Navbar/Navbar.js"
-//import "./layout.css"
+import * as styles from "./layout.module.scss"
 import Footer from "./Footer/Footer.js"
 import Content from "./Content/Content.js"
-
+import { Container } from 'react-bootstrap'
 
 const Layout = ({ children }) => {
-
-
   return (
-    <>
+    <Container className={styles.layout}>
       <Header menuItems={HeaderItems} />
       <Navbar />
       <Content />
       <Footer />
-    </>
+    </Container>
   )
 }
 
