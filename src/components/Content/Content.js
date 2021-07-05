@@ -3,11 +3,27 @@ import * as styles from './Content.module.scss'
 import { Container, Jumbotron, Col, Row, Card, CardDeck, Button, CardColumns} from 'react-bootstrap'
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import LeafletMap from "../LeafletMap/LeafletMap.js"
+import { graphql, useStaticQuery} from "gatsby"
 
 
 export default function Content() {
+    const data = useStaticQuery(graphql`
+    query {
+        allGoogleSheet1Sheet {
+          nodes {
+            address
+            cchypy
+            ccchi
+            latitude
+            longitude
+          }
+        }
+      }
+    `)
   return (
     <Container className={styles.content}>
+    <h1>{data.allGoogleSheet1Sheet.nodes[25].latitude}</h1>
         <Jumbotron className={styles.contentHeadline} style={{ marginTop: 0, marginBottom: 20,padding:0 }}>
         <Row>
         <Col>
@@ -30,6 +46,24 @@ export default function Content() {
 
         </Row>
         </Jumbotron>
+
+        {/* {typeof window !== 'undefined' &&
+        <LeafletMap
+          position={[52,-0.5]}
+          zoom={8}
+          markerText={"Hello, this is a marker"}
+        />
+    } */}
+
+
+    {typeof window !== 'undefined' &&
+        <LeafletMap
+            position={[1.3521, 103.9198]}
+          zoom={8}
+          markerText={"Hello, this is a marker"}
+          data = {data.allGoogleSheet1Sheet}
+        />
+    }
 
         <Container>
         <Row>

@@ -28,6 +28,27 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+          spreadsheetId: '1_O5UqI8zXs3-d3Ga9TOKPDD8tXOVlI1AJom_2lGqXZc',
+          worksheetTitle: 'ie the name in the worksheet tab',
+          credentials: require('./client_secret.json')
+      }
+    },
+    {
+      resolve: 'gatsby-source-google-spreadsheets',
+      options: {
+        spreadsheetId: '1_O5UqI8zXs3-d3Ga9TOKPDD8tXOVlI1AJom_2lGqXZc',
+        credentials: require('./client_secret.json')
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-react-leaflet',
+      options: {
+        linkStyles: true // (default: true) Enable/disable loading stylesheets via CDN
+      }
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
