@@ -8,6 +8,8 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-fontawesome-css`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,13 +31,13 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-google-sheets',
+      resolve: `gatsby-source-filesystem`,
       options: {
-          spreadsheetId: '1_O5UqI8zXs3-d3Ga9TOKPDD8tXOVlI1AJom_2lGqXZc',
-          worksheetTitle: 'ie the name in the worksheet tab',
-          credentials: require('./client_secret.json')
-      }
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
     },
+    `gatsby-transformer-csv`,
     {
       resolve: 'gatsby-source-google-spreadsheets',
       options: {

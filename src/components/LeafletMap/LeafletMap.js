@@ -18,7 +18,7 @@ export default class LeafletMap extends React.Component {
   }
 
   static defaultProps = {
-    position: [51, -1],
+    position: [1.335, 103.0507],
     zoom: 13,
     markerText: ""
   }
@@ -31,21 +31,7 @@ export default class LeafletMap extends React.Component {
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-          {/* {this.props.markerText !== "" &&
-          <Marker position={this.props.position}>
-            <Popup>{this.props.markerText}</Popup>
-          </Marker>
-          } */}
-          {/* {this.props.markerText !== "" &&
-          <Marker position={[1.3521, 103.9198]}>
-            <Popup>{"this is another marker"}</Popup>
-          </Marker>
-          }
-          {this.props.markerText !== "" &&
-          <Marker position={[this.props.data.nodes[0].latitude, this.props.data.nodes[0].longitude]}>
-            <Popup>{this.props.data.nodes[0].ccchi}</Popup>
-          </Marker>
-          } */}
+
           {this.props.data.nodes.map((location) => (
             <Marker position={[location.latitude === null ? 1.335 : location.latitude, location.longitude === null ? 103.0507 : location.longitude]}>
             <Popup>

@@ -1,7 +1,7 @@
 import React, {useState } from 'react'
 import * as styles from './Navbar.module.scss'
 import { Container, Row, Col, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import { graphql, useStaticQuery} from "gatsby"
+import { Link, graphql, useStaticQuery} from "gatsby"
 
 function HoverControlledDropdown(props) {
     const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +32,7 @@ export default function NavBar({ menuItems }) {
     // {navdata.nodes.map((node) => ( retrun (
     //     <HoverControlledDropdown className={styles.navItem} title={node.navItemTitle}>
     //     { node.nodenavDropdownItems.map((navDropdownItem) => 
-    //         <NavDropdown.Item href={navDropdownItem.link} target="_self">{navDropdownItem.title}</NavDropdown.Item>
+    //         <NavDropdown.Item href={navDropdownItem.link} target="_self"><Link to="/about">{navDropdownItem.title}</Link></NavDropdown.Item>
     //     )}
     //     </HoverControlledDropdown>
     //     ))

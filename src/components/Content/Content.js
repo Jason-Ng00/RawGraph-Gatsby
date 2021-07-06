@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import * as styles from './Content.module.scss'
 import { Container, Jumbotron, Col, Row, Card, CardDeck, Button, CardColumns} from 'react-bootstrap'
 import { StaticImage } from "gatsby-plugin-image"
@@ -6,8 +6,44 @@ import { Link } from "gatsby"
 import LeafletMap from "../LeafletMap/LeafletMap.js"
 import { graphql, useStaticQuery} from "gatsby"
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Chart from "./Chart.js"
+
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
+    },
+  }));
 
 export default function Content() {
+    const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+
+
     const data = useStaticQuery(graphql`
     query {
         allGoogleSheet1Sheet {
@@ -21,9 +57,23 @@ export default function Content() {
         }
       }
     `)
+
   return (
     <Container className={styles.content}>
-    <h1>{data.allGoogleSheet1Sheet.nodes[25].latitude}</h1>
+    
+<Button variant="outlined" onClick={handleClick}>
+  Open success snackbar
+</Button>
+<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+  <Alert onClose={handleClose} severity="success">
+    This is a success message!
+  </Alert>
+</Snackbar>
+<Alert severity="error">This is an error message!</Alert>
+<Alert severity="warning">This is a warning message!</Alert>
+<Alert severity="info">This is an information message!</Alert>
+<Alert severity="success">This is a success message!</Alert>
+
         <Jumbotron className={styles.contentHeadline} style={{ marginTop: 0, marginBottom: 20,padding:0 }}>
         <Row>
         <Col>
