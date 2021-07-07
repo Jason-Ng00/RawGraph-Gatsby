@@ -60,7 +60,7 @@ export default function Content() {
 
   return (
     <Container className={styles.content}>
-    
+
 <Button variant="outlined" onClick={handleClick}>
   Open success snackbar
 </Button>
@@ -73,7 +73,7 @@ export default function Content() {
 <Alert severity="warning">This is a warning message!</Alert>
 <Alert severity="info">This is an information message!</Alert>
 <Alert severity="success">This is a success message!</Alert>
-
+    <Chart />
         <Jumbotron className={styles.contentHeadline} style={{ marginTop: 0, marginBottom: 20,padding:0 }}>
         <Row>
         <Col>

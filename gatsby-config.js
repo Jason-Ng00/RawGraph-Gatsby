@@ -9,7 +9,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-material-ui`,
-    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
