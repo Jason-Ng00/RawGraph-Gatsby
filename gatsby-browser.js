@@ -1,3 +1,10 @@
+import React from "react";
+import Layout from "./src/components/Layout";
+
+import {AnimatePresence} from 'framer-motion';
+export const wrapPageElement = ({element}) => (
+  <AnimatePresence exitBeforeEnter>{element}</AnimatePresence>
+);
 /**
  * Implement Gatsby's Browser APIs in this file.
  *

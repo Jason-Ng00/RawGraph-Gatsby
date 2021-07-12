@@ -97,13 +97,7 @@ export default function Content() {
         </Row>
         </Jumbotron>
 
-        {/* {typeof window !== 'undefined' &&
-        <LeafletMap
-          position={[52,-0.5]}
-          zoom={8}
-          markerText={"Hello, this is a marker"}
-        />
-    } */}
+
 
 
     {typeof window !== 'undefined' &&

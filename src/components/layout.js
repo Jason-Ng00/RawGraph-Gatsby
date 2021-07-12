@@ -16,33 +16,54 @@ import Footer from "./Footer/Footer.js"
 import Content from "./Content/Content.js"
 import { Container } from 'react-bootstrap'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import TransitionLink from 'gatsby-plugin-transition-link'
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { motion, AnimatePresence } from "framer-motion"
 
-const Layout = ({ pageTitle, children  }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }  
-  `)
+const duration = 0.5
+const variants = {
+  initial: {
+    opacity: 0,
+    x: 100
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      duration: duration,
+      delay: duration,
+      when: "beforeChildren",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: 200,
+    transition: { duration: duration },
+  },
+}
 
+export const Layout = ({ pageTitle, children}) => {
   return (
     <Container className={styles.layout}>
       <Header menuItems={HeaderItems} />
       <Navbar />
+      <Container>
+                <motion.main
+            initial={{ opacity: 0, x: -200 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 200 }}
+            transition={{
+              type: "spring",
+              mass: 0.35,
+              stiffness: 75,
+              duration: 1.0
+              }}
+            >
+                <Content />
+                {children}
+              </motion.main>
+      </Container>
 
-      <AniLink paintDrip to="/page-2">
-  Go to Page 2
-</AniLink>
-      <AniLink cover to="/page-2" bg="#663399">
-  Go to index
-</AniLink>
 
-      <Content />
       <Footer />
     </Container>
   )
