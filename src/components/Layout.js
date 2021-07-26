@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 import HeaderItems from './HeaderItems.js'
 import Header from "./Header/Header.js"
 import Navbar from "./Navbar/Navbar.js"
-import * as styles from "./layout.module.scss"
+import * as styles from "./Layout.module.scss"
 import Footer from "./Footer/Footer.js"
 
 import { Container } from 'react-bootstrap'
