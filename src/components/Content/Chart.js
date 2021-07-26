@@ -3,18 +3,59 @@ import { ResponsiveBar } from '@nivo/bar'
 import { graphql, useStaticQuery } from "gatsby"
 import data from './data'
 import config from './config'
+import Checkbox from '@material-ui/core/Checkbox';
+import { DataGrid } from '@material-ui/data-grid';
+import { makeStyles } from '@material-ui/styles';
+import { CardHeader, Button } from '@material-ui/core';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import BarChartHeader from "./BarChartHeader";
+
 
 import './chart.css'
 
+const columns = [
+    { field: 'id', headerName: 'ID', width: 170 },
+    { field: 'name', headerName: 'NAME', width: 170 },
+    { field: 'age', headerName: 'AGE', width: 170 },
+  ];
+    
+  const rows = [
+    { id: 1, name: 'Gourav', age: 12 },
+    { id: 2, name: 'Geek', age: 43 },
+    { id: 3, name: 'Pranav', age: 41 },
+  ];
+    
+  const useStyles = makeStyles(() => ({
+    root: {},
+    chartContainer: {
+      position: 'relative',
+      padding: '19px 0',
+    },
+  }));
 
 
-export default function Chart() {
 
-    const data1 = useStaticQuery(graphql`
+
+
+
+export default function Chart(props) {
+const { className, query, dates, ...rest } = props;
+const classes = useStyles();
+
+const data1 = useStaticQuery(graphql`
 query {
     allJpsgCsv {
         distinct(field: Performance_types_concatenated)
         group(field: Performance_types_concatenated) {
+          fieldValue
+          totalCount
+          nodes {
+            Genres_concatenated
+          }
+        }
+      }
+      allCopyOfJpsgCsv {
+        group(field: Date) {
           fieldValue
           totalCount
         }
@@ -107,13 +148,31 @@ const config1 = {
     ]
 }
 
+
+const [dateRange, setDateRange] = React.useState(dates ? dates[0] : 'All');
+
         return (
+            <div>
+        <BarChartHeader data={data1} dates={dates} dateRange={dateRange} setDateRange={setDateRange} />
+
             <div class="chart">
                   <button
         onClick={() => {
          alert(JSON.stringify(data1.allJpsgCsv.group))
         }}
        ></button>
+       {/* <DataGrid rows={rows} 
+                columns={columns} 
+                pageSize={2}
+        filterModel={{
+          items: [
+            { columnField: 'name',
+              operatorValue: 'contains', 
+              value: 'Geek' },
+          ],
+        }}
+      /> */}
+
                 <ResponsiveBar
                     data={data1.allJpsgCsv.group}
                     keys={["totalCount"]}
@@ -135,7 +194,11 @@ const config1 = {
                     motionStiffness={90}
                     motionDamping={15}
                 />
-            </div>
+                </div>
+
+
+                </div>
+
         )
 }
 

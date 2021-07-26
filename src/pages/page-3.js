@@ -18,60 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ChartHeader = (props) => {
-  const { data, defaultYear , year, setYear} = props;
-  const categories = ["2020","2019","2018","2017","2016","2015"];
-  const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (year) => {
-    setYear(year);
-    setAnchorEl(null);
-  };
-
-  return (
-    <CardHeader
-      action={
-        <div>
-          <Button
-            className={classes.headerButton}
-            size="small"
-            variant="text"
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            {year} <ArrowDropDownIcon />
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={() => handleClose(year)}
-          >
-            {categories.map((year) => (
-                <MenuItem key={year} onClick={() => handleClose(year)}>{year}</MenuItem>
-              ))}
-          </Menu>
-        </div>
-      }
-      title="Performances Calendar"
-    />
-  );
-};
-
-ChartHeader.propTypes = {
-  className: PropTypes.string,
-};
-
-
-export default function SecondPage(props) {        
+export default function ThirdPage(props) {        
   const data1 = useStaticQuery(graphql`
 query {
     allJpsgCsv {
@@ -101,32 +48,82 @@ query {
   }
 `)
 
-
-const [year, setYear] = React.useState('2020');
-const [day, setDay] = React.useState(null);
-
+const [day, setDay] = React.useState("01-01");
+var dates=[];
+var dataAll = [];
 const dataNew = data1.allCopyOfJpsgCsv.group;
 dataNew.shift();
   
   return (
   <Layout>
-    <Seo title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+    <Seo title="Page three" />
+    <h1>Hi from the third page</h1>
+    <p>Welcome to page 3</p>
     <button
         onClick={() => {
         //  alert(dataNew[0].day.slice(0,4) == year)
-         alert(JSON.stringify(dataNew.filter(event => event.day.slice(0,4) == year)))
+         alert(JSON.stringify(dataNew.map(event => 
+            ({
+                day: "2020" + event.day.slice(4,10),
+                value: event.value
+            })           
+             ).map(event => 
+                 {
+                    if (!dates.includes(event.day)) {
+                        dates.push(event.day);
+                        dataAll.push({
+                            day: event.day,
+                            value: event.value
+                        })
+                    } else {
+                        for(var data of dataAll) {
+                            if(data.day === event.day) {
+                                data.value += event.value
+                            }  
+                        }
+                    }
+                    return dataAll
+                 }
+             )))
         }}
        ></button>
 
-  <ChartHeader data={data1} defaultYear="2020" year={year} setYear={setYear} />
+<button
+        onClick={() => {
+          alert(day)
+
+        //  alert(data1.allCopyOfJpsgCsv.nodes[0].Date.slice(5,10) == day.slice(5,10))
+        }}
+       ></button>
+
 
     <div class="chart" style={{height:500}}>
     <ResponsiveCalendar
-        data={dataNew.filter(event => event.day.slice(0,4) == year)}
-        from={year +  "-01-01"}
-        to={year + "-12-31"}
+        data={dataNew.map(event => 
+            ({
+                day: "2020" + event.day.slice(4,10),
+                value: event.value
+            })           
+             ).map(event => 
+                 {
+                    if (!dates.includes(event.day)) {
+                        dates.push(event.day);
+                        dataAll.push({
+                            day: event.day,
+                            value: event.value
+                        })
+                    } else {
+                        for(var data of dataAll) {
+                            if(data.day === event.day) {
+                                data.value += event.value
+                            }  
+                        }
+                    }
+                    return dataAll
+                 }
+             )[0]}
+        from={"2020-01-01"}
+        to={"2020-12-31"}
         emptyColor="#eeeeee"
         colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
@@ -146,11 +143,13 @@ dataNew.shift();
                 itemDirection: 'right-to-left'
             }
         ]}
-        onClick={(info) => setDay(info.day)}
+        yearLegend={(year) => ""}
+        onClick={(info) => setDay(info.day.slice(5,10))}
+        tooltip={function(info){return <h1>{info.day.slice(5,10)}:{info.value}</h1>}}
     />
     </div>
     <div class="Events">
-      {data1.allCopyOfJpsgCsv.nodes.filter(node => node.Date == day).map(node =>
+      {data1.allCopyOfJpsgCsv.nodes.filter(node => node.Date.slice(5,10) == day).map(node =>
         <div>
           <h4>{node.Performance_Title}</h4>
           <p>{node.Genres_concatenated}</p>
@@ -158,8 +157,9 @@ dataNew.shift();
         </div>
               )}
     </div>
-    <br />
-    <Link to="/page-3/">Go to page 3</Link>
+
+    <Link to="/page-2/">Go to page 2</Link> <br />
+
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 )

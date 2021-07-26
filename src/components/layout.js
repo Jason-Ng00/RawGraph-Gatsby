@@ -13,7 +13,7 @@ import Header from "./Header/Header.js"
 import Navbar from "./Navbar/Navbar.js"
 import * as styles from "./layout.module.scss"
 import Footer from "./Footer/Footer.js"
-import Content from "./Content/Content.js"
+
 import { Container } from 'react-bootstrap'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { motion, AnimatePresence } from "framer-motion"
@@ -58,7 +58,6 @@ export const Layout = ({ pageTitle, children}) => {
               duration: 1.0
               }}
             >
-                <Content />
                 {children}
               </motion.main>
       </Container>
