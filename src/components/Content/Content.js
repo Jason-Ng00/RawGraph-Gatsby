@@ -1,14 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import * as styles from './Content.module.scss'
 import { Container, Jumbotron, Col, Row, Card, CardDeck, Button, CardColumns} from 'react-bootstrap'
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
 import LeafletMap from "../LeafletMap/LeafletMap.js"
 import { graphql, useStaticQuery} from "gatsby"
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
 
 import Chart from "./Chart.js"
 
@@ -17,17 +15,8 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      '& > * + *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-  }));
 
 export default function Content() {
-    const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {

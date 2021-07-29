@@ -15,31 +15,7 @@ import * as styles from "./Layout.module.scss"
 import Footer from "./Footer/Footer.js"
 
 import { Container } from 'react-bootstrap'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { motion, AnimatePresence } from "framer-motion"
-
-const duration = 0.5
-const variants = {
-  initial: {
-    opacity: 0,
-    x: 100
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    x: 0,
-    transition: {
-      duration: duration,
-      delay: duration,
-      when: "beforeChildren",
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: 200,
-    transition: { duration: duration },
-  },
-}
+import { motion } from "framer-motion"
 
 export const Layout = ({ pageTitle, children}) => {
   return (

@@ -2,56 +2,47 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { ResponsiveCalendar } from '@nivo/calendar'
 import { graphql, useStaticQuery } from "gatsby"
-import { makeStyles } from '@material-ui/styles';
-import { CardHeader, Button } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PropTypes from 'prop-types';
+
+
 
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
 
-const useStyles = makeStyles(() => ({
-  headerButton: {
-    letterSpacing: '0.4px',
-  },
-}));
 
 export default function ThirdPage(props) {        
   const data1 = useStaticQuery(graphql`
 query {
-    allJpsgCsv {
-        distinct(field: Performance_types_concatenated)
-        group(field: Performance_types_concatenated) {
+  allJpsgCsv {
+    distinct(field: Performance_types_concatenated)
+    one:group(field: Date) {
+      day:fieldValue
+      value:totalCount
+    }
+
+    nodes {
+      Date
+      English_name_of_performing_troupes__performers_concatenated
+      Genres_concatenated
+      Performance_Title
+      Time
+      Venue_concatenated
+    }
+    two:group(field: Performance_types_concatenated) {
           fieldValue
           totalCount
           nodes {
             Genres_concatenated
-          }
         }
-      }
-      allCopyOfJpsgCsv {
-        group(field: Date) {
-          day:fieldValue
-          value:totalCount
-        }
-        nodes {
-          Date
-          English_name_of_performing_troupes__performers_concatenated
-          Genres_concatenated
-          Performance_Title
-          Time
-          Venue_concatenated
-        }
-      }
+    }
+}
+
   }
 `)
 
 const [day, setDay] = React.useState("01-01");
 var dates=[];
 var dataAll = [];
-const dataNew = data1.allCopyOfJpsgCsv.group;
+const dataNew = data1.allJpsgCsv.one;
 dataNew.shift();
   
   return (
@@ -59,7 +50,7 @@ dataNew.shift();
     <Seo title="Page three" />
     <h1>Hi from the third page</h1>
     <p>Welcome to page 3</p>
-    <button
+    {/* <button
         onClick={() => {
         //  alert(dataNew[0].day.slice(0,4) == year)
          alert(JSON.stringify(dataNew.map(event => 
@@ -94,7 +85,7 @@ dataNew.shift();
 
         //  alert(data1.allCopyOfJpsgCsv.nodes[0].Date.slice(5,10) == day.slice(5,10))
         }}
-       ></button>
+       ></button> */}
 
 
     <div class="chart" style={{height:500}}>
@@ -149,7 +140,7 @@ dataNew.shift();
     />
     </div>
     <div class="Events">
-      {data1.allCopyOfJpsgCsv.nodes.filter(node => node.Date.slice(5,10) == day).map(node =>
+      {data1.allJpsgCsv.nodes.filter(node => node.Date.slice(5,10) === day).map(node =>
         <div>
           <h4>{node.Performance_Title}</h4>
           <p>{node.Genres_concatenated}</p>

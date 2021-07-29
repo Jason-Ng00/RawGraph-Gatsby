@@ -1,7 +1,6 @@
 import React, {useState } from 'react'
 import * as styles from './Navbar.module.scss'
 import { Container, Row, Col, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import { Link, graphql, useStaticQuery} from "gatsby"
 
 function HoverControlledDropdown(props) {
     const [isHovered, setIsHovered] = useState(false);

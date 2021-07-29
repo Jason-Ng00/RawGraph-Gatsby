@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ChartHeader = (props) => {
-  const { data, defaultYear , year, setYear} = props;
+  const { year, setYear} = props;
   const categories = ["2020","2019","2018","2017","2016","2015"];
   const classes = useStyles();
 
@@ -76,19 +76,11 @@ export default function SecondPage(props) {
 query {
     allJpsgCsv {
         distinct(field: Performance_types_concatenated)
-        group(field: Performance_types_concatenated) {
-          fieldValue
-          totalCount
-          nodes {
-            Genres_concatenated
-          }
-        }
-      }
-      allCopyOfJpsgCsv {
-        group(field: Date) {
+        one:group(field: Date) {
           day:fieldValue
           value:totalCount
         }
+
         nodes {
           Date
           English_name_of_performing_troupes__performers_concatenated
@@ -97,7 +89,14 @@ query {
           Time
           Venue_concatenated
         }
-      }
+        two:group(field: Performance_types_concatenated) {
+              fieldValue
+              totalCount
+              nodes {
+                Genres_concatenated
+            }
+        }
+    }
   }
 `)
 
@@ -105,7 +104,7 @@ query {
 const [year, setYear] = React.useState('2020');
 const [day, setDay] = React.useState(null);
 
-const dataNew = data1.allCopyOfJpsgCsv.group;
+const dataNew = data1.allJpsgCsv.one;
 dataNew.shift();
   
   return (
@@ -113,18 +112,18 @@ dataNew.shift();
     <Seo title="Page two" />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    <button
+    {/* <button
         onClick={() => {
         //  alert(dataNew[0].day.slice(0,4) == year)
-         alert(JSON.stringify(dataNew.filter(event => event.day.slice(0,4) == year)))
+         alert(JSON.stringify(dataNew))
         }}
-       ></button>
+       ></button> */}
 
   <ChartHeader data={data1} defaultYear="2020" year={year} setYear={setYear} />
 
     <div class="chart" style={{height:500}}>
     <ResponsiveCalendar
-        data={dataNew.filter(event => event.day.slice(0,4) == year)}
+        data={dataNew.filter(event => event.day.slice(0,4) === year)}
         from={year +  "-01-01"}
         to={year + "-12-31"}
         emptyColor="#eeeeee"
@@ -150,7 +149,7 @@ dataNew.shift();
     />
     </div>
     <div class="Events">
-      {data1.allCopyOfJpsgCsv.nodes.filter(node => node.Date == day).map(node =>
+      {data1.allJpsgCsv.nodes.filter(node => node.Date === day).map(node =>
         <div>
           <h4>{node.Performance_Title}</h4>
           <p>{node.Genres_concatenated}</p>
