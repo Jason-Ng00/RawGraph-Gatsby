@@ -113,7 +113,7 @@ const config1 = {
 
         return (
             <div>
-            <div class="chart">
+            <div className="chart">
             <h2>Performances by Genre</h2>
                   {/* <button
         onClick={() => {
